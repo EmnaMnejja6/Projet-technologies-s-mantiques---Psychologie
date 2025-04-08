@@ -105,7 +105,42 @@ Ces vocabulaires standard assurent l'interopérabilité de l'ontologie avec d'au
 ### 1. Patients adultes avec symptômes physiques
 
 ```sparql
-SELECT ?patient WHERE {
-  ?patient a :Adulte .
-  ?patient :aSymptomePhysique ?symptome .
+PREFIX : <http://www.example.org/psychontology#>
+
+SELECT ?patient ?symptome
+WHERE {
+  ?patient a :Patient .
+  {
+    ?patient :aSymptome ?symptome .
+  }
+  UNION
+  {
+    ?patient :aSymptomePhysique ?symptome .
+  }
+  UNION
+  {
+    ?patient :aSymptomePsychologique ?symptome .
+  }
 }
+
+2️⃣ Lister les troubles psychologiques avec les interventions recommandées
+
+```sparql
+PREFIX : <http://www.example.org/psychontology#>
+
+SELECT ?trouble ?intervention
+WHERE {
+  ?trouble a :TroublePsychologique .
+  ?trouble :recommandeIntervention ?intervention .
+}
+3️⃣ Lister les tests passés par chaque patient
+
+```sparql
+PREFIX : <http://www.example.org/psychontology#>
+
+SELECT ?patient ?test
+WHERE {
+  ?patient a :Patient .
+  ?patient :prendsTest ?test .
+}
+
