@@ -122,8 +122,7 @@ WHERE {
     ?patient :aSymptomePsychologique ?symptome .
   }
 }
-
-2️⃣ Lister les troubles psychologiques avec les interventions recommandées
+### 2.Lister les troubles psychologiques avec les interventions recommandées
 
 ```sparql
 PREFIX : <http://www.example.org/psychontology#>
@@ -143,4 +142,23 @@ WHERE {
   ?patient a :Patient .
   ?patient :prendsTest ?test .
 }
+
+4️⃣ Lister tous les types de troubles et leur sous-classes
+PREFIX : <http://www.example.org/psychontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?subTrouble
+WHERE {
+  ?subTrouble rdfs:subClassOf :TroublePsychologique .
+}
+5️⃣ Lister les patients diagnostiqués avec un trouble donné (ex: TDAH)
+PREFIX : <http://www.example.org/psychontology#>
+
+SELECT ?patient
+WHERE {
+  ?patient a :Patient .
+  ?patient :diagnostiqueAvec :tdah .
+}
+
+
 
