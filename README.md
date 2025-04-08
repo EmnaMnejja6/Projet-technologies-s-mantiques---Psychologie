@@ -1,81 +1,99 @@
-# 🧠 Ontologie pour la Santé Mentale
+# Ontologie pour la Santé Mentale
 
-Bienvenue dans ce projet d'ontologie dédié à la santé mentale ! Ce projet a pour but de modéliser des interactions entre patients, symptômes, troubles psychologiques, tests et interventions, en utilisant les technologies sémantiques (RDF, RDFS, OWL, SPARQL et SWRL). 
+Ce projet a pour but de modéliser le domaine de la santé mentale en intégrant les concepts suivants :
+1. **Patient**
+2. **Symptômes**
+3. **Troubles Psychologiques**
+4. **Test**
+5. **Intervention**
+
+Les relations principales mises en place sont :
+- **aSymptome** (avec sous-propriétés *Physique* et *Psychologique*)
+- **diagnostiquéAvec**
+- **prendsTest**
+- **recommandeIntervention**
 
 ---
 
-## 📑 Table des Matières
+## Table des Matières
 
 - [Contexte et Objectifs](#contexte-et-objectifs)
-- [Domaines et Modélisation](#domaines-et-mod%C3%A9lisation)
+- [Modélisation du Domaine](#modélisation-du-domaine)
   - [Classes et Sous-classes](#classes-et-sous-classes)
-  - [Propriétés et Sous-propriétés](#propri%C3%A9t%C3%A9s-et-sous-propri%C3%A9t%C3%A9s)
-  - [Tableau récapitulatif](#tableau-r%C3%A9capitulatif)
-- [Namespaces Utilisés](#namespaces-utilis%C3%A9s)
-- [Exemples de Requêtes SPARQL](#exemples-de-requ%C3%AAtes-sparql)
-- [Structure du Dépôt](#structure-du-d%C3%A9p%C3%B4t)
+  - [Propriétés et Sous-propriétés](#propriétés-et-sous-propriétés)
+  - [Tableau récapitulatif](#tableau-récapitulatif)
+- [Namespaces Utilisés](#namespaces-utilisés)
+- [Exemples de Requêtes SPARQL](#exemples-de-requêtes-sparql)
+- [Structure du Dépôt](#structure-du-dépôt)
 - [Conclusion](#conclusion)
 
 ---
 
-## 🎯 Contexte et Objectifs
+## Contexte et Objectifs
 
-Ce projet vise à :
-- **Modéliser** les données du domaine de la santé mentale.
-- **Exploiter** les technologies sémantiques pour enrichir les inférences et faciliter l’interrogation des données.
-- **Améliorer** la granularité des diagnostics et recommandations via une représentation hiérarchique des concepts.
+Ce projet vise à construire une ontologie détaillée pour la santé mentale en utilisant des technologies sémantiques (RDF, RDFS, OWL, SPARQL, et SWRL). L'objectif est de modéliser les interactions entre les patients, leurs symptômes, les troubles diagnostiqués, les tests de diagnostic et les interventions thérapeutiques.
 
 ---
 
-## 📚 Domaines et Modélisation
+## Modélisation du Domaine
 
 ### Classes et Sous-classes
 
 - **Patient**
   - **Adulte**
   - **Enfant**
-- **TroublePsychologique**
+- **Symptômes**
+- **Troubles Psychologiques**
   - **Neurodéveloppemental**
   - **De humeur**
   - **De personnalité**
+- **Test**
+- **Intervention**
 
 ### Propriétés et Sous-propriétés
 
 - **aSymptome**
-  - **Physique** (symptômes corporels, ex. douleur, fatigue)
-  - **Psychologique** (symptômes mentaux, ex. anxiété, tristesse)
-
-De plus, nous avons d'autres propriétés interconnectées dans l'ontologie, notamment :
-- **diagnostiquéAvec** : lie un patient à un trouble psychologique.
-- **prendsTest** : lie un patient à un test.
-- **recommandeIntervention** : lie un trouble psychologique à une intervention.
+  - **Physique**
+  - **Psychologique**
+- **diagnostiquéAvec**  
+  *(Lie un Patient à un Trouble Psychologique)*
+- **prendsTest**  
+  *(Lie un Patient à un Test)*
+- **recommandeIntervention**  
+  *(Lie un Trouble Psychologique à une Intervention)*
 
 ### Tableau récapitulatif
 
-| **Catégorie**             | **Élément Général**         | **Sous-éléments**                                     |
-|---------------------------|-----------------------------|-------------------------------------------------------|
+| **Catégorie**             | **Élément Général**         | **Sous-éléments / Relations**                                                                                                                                                   |
+|---------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Classes : Patient**     | Patient                     | - Adulte<br>- Enfant                                  |
+| **Classes : Symptômes**   | Symptômes                   | (Pas de sous-classe spécifique, regroupe l'ensemble des symptômes)                                                   |
 | **Classes : Troubles**    | TroublePsychologique        | - Neurodéveloppemental<br>- De humeur<br>- De personnalité |
+| **Classes : Test**        | Test                        | (Représente les différents tests de diagnostic)                                 |
+| **Classes : Intervention**| Intervention                | (Représente les interventions thérapeutiques)                |
 | **Propriétés : aSymptome** | aSymptome                   | - Physique<br>- Psychologique                         |
+| **Autres Propriétés**     | diagnostiquéAvec            | Lie un Patient à un Trouble Psychologique             |
+|                           | prendsTest                  | Lie un Patient à un Test                              |
+|                           | recommandeIntervention      | Lie un Trouble Psychologique à une Intervention        |
 
 ---
 
-## 🔖 Namespaces Utilisés
+## Namespaces Utilisés
 
-Pour garantir l'interopérabilité et la conformité aux standards, nous utilisons les namespaces suivants :
+| Préfixe | URI                                         |
+|---------|---------------------------------------------|
+| `xsd`   | http://www.w3.org/2001/XMLSchema#            |
+| `dc`    | http://purl.org/dc/elements/1.1/             |
+| `foaf`  | http://xmlns.com/foaf/0.1/                   |
+| `rdfs`  | http://www.w3.org/2000/01/rdf-schema#         |
+| `owl`   | http://www.w3.org/2002/07/owl#               |
+| `skos`  | http://www.w3.org/2004/02/skos/core#          |
 
-- **xsd** : `http://www.w3.org/2001/XMLSchema#`
-- **dc** : `http://purl.org/dc/elements/1.1/`
-- **foaf** : `http://xmlns.com/foaf/0.1/`
-- **rdfs** : `http://www.w3.org/2000/01/rdf-schema#`
-- **owl** : `http://www.w3.org/2002/07/owl#`
-- **skos** : `http://www.w3.org/2004/02/skos/core#`
-
-Ces namespaces vous permettront de définir les types de données, d'ajouter des métadonnées, et de construire une ontologie robuste et interopérable.
+Ces namespaces garantissent l'interopérabilité et permettent d'utiliser des vocabulaires standards pour enrichir notre ontologie.
 
 ---
 
-## 🔍 Exemples de Requêtes SPARQL
+## Exemples de Requêtes SPARQL
 
 ### 1. Patients adultes avec symptômes physiques
 
