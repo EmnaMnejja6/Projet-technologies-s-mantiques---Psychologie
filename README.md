@@ -84,6 +84,8 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
 |                           | recommandeIntervention      | Lie un Trouble Psychologique à une Intervention                                                                                                             |
 
 ---
+### Visualisation
+![psychologie](https://github.com/user-attachments/assets/b4a4c838-cd25-4661-a337-8e9655b1224b)
 
 ## 🌐 Namespaces Utilisés
 
