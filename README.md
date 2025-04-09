@@ -84,6 +84,9 @@ Ce projet vise à construire une ontologie détaillée pour la psychologie en ut
 
 ---
 
+![santementale](https://github.com/user-attachments/assets/af1855ac-4b36-49db-8f18-c680c970bd45)
+
+
 ## 🌐 Namespaces Utilisés
 
 | Préfixe | URI                                         |
