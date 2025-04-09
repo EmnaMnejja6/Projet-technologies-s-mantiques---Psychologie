@@ -98,3 +98,57 @@ SELECT ?adulte ?symptome ?test WHERE {
 #resultat
 adulte	 symptôme	  test
 Karim	   insomnie	  BDI
+
+
+
+
+Lister les patients et leurs symptômes
+
+PREFIX : <http://www.example.org/psychologie#>
+
+SELECT ?patient ?symptome
+WHERE {
+  ?patient a :Enfant . # ou :Adulte selon les cas
+  ?patient :aSymptome ?symptome .
+}
+
+Trouver les troubles psychologiques et les interventions recommandées
+PREFIX : <http://www.example.org/psychologie#>
+
+SELECT ?trouble ?intervention
+WHERE {
+  ?trouble a :TroublePsychologique .
+  ?trouble :recommandeIntervention ?intervention .
+}
+
+Lister les patients qui ont passé un test spécifique
+PREFIX : <http://www.example.org/psychologie#>
+
+SELECT ?patient
+WHERE {
+  ?patient a :Adulte . # ou :Enfant
+  ?patient :prendsTest :BeckDepressionInventory .
+}
+
+Rechercher les patients qui ont un symptôme psychologique
+PREFIX : <http://www.example.org/psychologie#>
+
+SELECT ?patient
+WHERE {
+  ?patient a :Adulte . # ou :Enfant
+  ?patient :Psychologique ?symptome .
+}
+
+Obtenir les tests utilisés pour diagnostiquer un trouble donné
+PREFIX : <http://www.example.org/psychologie#>
+
+SELECT ?test ?trouble
+WHERE {
+  ?patient a :Adulte .
+  ?patient :prendsTest ?test .
+  ?patient :diagnostiqueAvec ?trouble .
+}
+
+
+
+
