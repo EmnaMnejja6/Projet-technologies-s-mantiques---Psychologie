@@ -1,40 +1,39 @@
 # 🧠 Ontologie pour la Psychologie
 
-Ce projet a pour but de modéliser le domaine de la psychologie en intégrant les concepts suivants :
-1. **Patient** 👤
-2. **Symptômes** 🤒
-3. **Troubles Psychologiques** 🧩
-4. **Test** 📝
-5. **Intervention** 💊
+Ce projet a pour but de modéliser le domaine de la psychologie en intégrant les concepts suivants :  
+1. **Patient** 👤  
+2. **Symptômes** 🤒  
+3. **Troubles Psychologiques** 🧩  
+4. **Test** 📝  
+5. **Intervention** 💊  
 
-Les relations principales mises en place sont :
-- **aSymptome** (avec sous-propriétés *Physique* 💪 et *Psychologique* 🧠)
-- **diagnostiquéAvec** (exemple : *Alice diagnostiquéAvec Dépression*)
-- **prendsTest** (exemple : *Alice prendsTest BeckDepressionInventory*)
-- **recommandeIntervention** (exemple : *Dépression recommandeIntervention CBT*)
+Les relations principales mises en place sont :  
+- **aSymptome** (avec sous-propriétés *Physique* 💪 et *Psychologique* 🧠)  
+- **diagnostiqueAvec** (exemple : *Alice diagnostiqueAvec Dépression*)  
+- **prendsTest** (exemple : *Alice prendsTest BeckDepressionInventory*)  
+- **recommandeIntervention** (exemple : *Dépression recommandeIntervention CBT*)
 
 ---
 
 ## 📑 Table des Matières
 
 - [Contexte et Objectifs](#contexte-et-objectifs)
-- [Modélisation du Domaine](#mod%C3%A9lisation-du-domaine)
+- [Modélisation du Domaine](#modélisation-du-domaine)
   - [Classes et Sous-classes](#classes-et-sous-classes)
-  - [Propriétés et Sous-propriétés](#propri%C3%A9t%C3%A9s-et-sous-propri%C3%A9t%C3%A9s)
-  - [Tableau récapitulatif](#tableau-r%C3%A9capitulatif)
-- [Namespaces Utilisés](#namespaces-utilis%C3%A9s)
-- [Exemples de Requêtes SPARQL](#exemples-de-requ%C3%AAtes-sparql)
-- [Structure du Dépôt](#structure-du-d%C3%A9p%C3%B4t)
+  - [Propriétés et Sous-propriétés](#propriétés-et-sous-propriétés)
+  - [Tableau récapitulatif](#tableau-récapitulatif)
+- [Namespaces Utilisés](#namespaces-utilisés)
+- [Structure du Dépôt](#structure-du-dépôt)
 - [Conclusion](#conclusion)
 
 ---
 
 ## 🎯 Contexte et Objectifs
 
-Ce projet vise à construire une ontologie détaillée pour la santé mentale en utilisant des technologies sémantiques (RDF, RDFS, OWL, SPARQL, et SWRL). L'objectif est de :
+Ce projet vise à construire une ontologie détaillée pour la psychologie en utilisant des technologies sémantiques (RDF, RDFS, OWL, SPARQL et SWRL). L'objectif est de :
 
-- **Modéliser** les interactions entre patients, symptômes, troubles, tests et interventions.  
-- **Exploiter** les inférences pour améliorer l'analyse des données cliniques.  
+- **Modéliser** les interactions entre patients, symptômes, troubles, tests et interventions.
+- **Exploiter** les inférences pour améliorer l'analyse des données cliniques.
 - **Faciliter** l'automatisation des recommandations thérapeutiques.
 
 ---
@@ -47,27 +46,27 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
   - **Adulte**  
   - **Enfant**
 - **Symptômes** 🤒  
-  *(Représente l'ensemble des symptômes observés chez un patient.)*
+  *Représente l'ensemble des symptômes observés chez un patient.*
 - **Troubles Psychologiques** 🧩  
   - **Neurodéveloppemental**  
   - **De humeur**  
   - **De personnalité**
 - **Test** 📝  
-  *(Regroupe les différents tests de diagnostic utilisés.)*
+  *Regroupe les différents tests de diagnostic utilisés.*
 - **Intervention** 💊  
-  *(Regroupe les interventions thérapeutiques.)*
+  *Regroupe les interventions thérapeutiques.*
 
 ### 🔗 Propriétés et Sous-propriétés
 
 - **aSymptome**  
   - **Physique** 💪  
   - **Psychologique** 🧠
-- **diagnostiquéAvec**  
-  *(Lie un Patient à un Trouble Psychologique, ex. : Alice diagnostiquéAvec Dépression)*
+- **diagnostiqueAvec**  
+  *Lie un Patient à un Trouble Psychologique (ex : Alice diagnostiqueAvec Dépression).*
 - **prendsTest**  
-  *(Lie un Patient à un Test, ex. : Alice prendsTest BeckDepressionInventory)*
+  *Lie un Patient à un Test (ex : Alice prendsTest BeckDepressionInventory).*
 - **recommandeIntervention**  
-  *(Lie un Trouble Psychologique à une Intervention, ex. : Dépression recommandeIntervention CBT)*
+  *Lie un Trouble Psychologique à une Intervention (ex : Dépression recommandeIntervention CBT).*
 
 ### 📊 Tableau récapitulatif
 
@@ -75,17 +74,15 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
 |---------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Classes : Patient**     | Patient 👤                  | - Adulte<br>- Enfant                                                                                                                                        |
 | **Classes : Symptômes**   | Symptômes 🤒                | (Regroupe l'ensemble des symptômes)                                                                                                                         |
-| **Classes : Troubles**    | TroublePsychologique 🧩     | - Neurodéveloppemental<br>- De humeur<br>- De personnalité                                                                                                  |
+| **Classes : Troubles**    | Trouble Psychologique 🧩     | - Neurodéveloppemental<br>- De humeur<br>- De personnalité                                                                                                  |
 | **Classes : Test**        | Test 📝                     | (Différents tests de diagnostic)                                                                                                                            |
 | **Classes : Intervention**| Intervention 💊             | (Interventions thérapeutiques)                                                                                                                              |
 | **Propriétés : aSymptome**| aSymptome                  | - Physique 💪<br>- Psychologique 🧠                                                                                                                           |
-| **Autres Propriétés**     | diagnostiquéAvec            | Lie un Patient à un Trouble Psychologique                                                                                                                   |
+| **Autres Propriétés**     | diagnostiqueAvec            | Lie un Patient à un Trouble Psychologique                                                                                                                   |
 |                           | prendsTest                  | Lie un Patient à un Test                                                                                                                                        |
 |                           | recommandeIntervention      | Lie un Trouble Psychologique à une Intervention                                                                                                             |
 
 ---
-### 🔍 Visualisation
-![psychologie](https://github.com/user-attachments/assets/b4a4c838-cd25-4661-a337-8e9655b1224b)
 
 ## 🌐 Namespaces Utilisés
 
@@ -100,3 +97,14 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
 
 Ces vocabulaires standard assurent l'interopérabilité de l'ontologie avec d'autres systèmes sémantiques.
 
+---
+
+## 🗂 Structure du Dépôt
+
+```plaintext
+psychologie-ontology/
+├── ontology.owl         # Fichier OWL complet de l'ontologie
+├── rdf_model.rdf        # Export RDF/XML de la modélisation en RDF et RDFS
+├── requetes_sparql.txt  # Fichier contenant les requêtes SPARQL
+├── regles_swrl.swrl     # Fichier contenant les règles SWRL
+└── README.md            # Documentation et présentation du projet
