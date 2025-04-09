@@ -1,6 +1,6 @@
-# 🧠 Ontologie pour la Santé Mentale
+# 🧠 Ontologie pour la Psychologie
 
-Ce projet a pour but de modéliser le domaine de la santé mentale en intégrant les concepts suivants :
+Ce projet a pour but de modéliser le domaine de la psychologie en intégrant les concepts suivants :
 1. **Patient** 👤
 2. **Symptômes** 🤒
 3. **Troubles Psychologiques** 🧩
@@ -102,63 +102,46 @@ Ces vocabulaires standard assurent l'interopérabilité de l'ontologie avec d'au
 
 ## 🔍 Exemples de Requêtes SPARQL
 
-### 1. Patients adultes avec symptômes physiques
-
-```sparql
-PREFIX : <http://www.example.org/psychontology#>
+### 1. Lister tous les patients (adultes ou enfants) avec leurs symptomes 
+PREFIX : <http://www.example.org/psychologie#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?patient ?symptome
 WHERE {
-  ?patient a :Patient .
-  {
-    ?patient :aSymptome ?symptome .
-  }
+  ?patient a ?type .
+  ?type rdfs:subClassOf* :Patient .
+  { ?patient :aSymptome ?symptome . }
   UNION
-  {
-    ?patient :aSymptomePhysique ?symptome .
-  }
+  { ?patient :aSymptomePhysique ?symptome . }
   UNION
-  {
-    ?patient :aSymptomePsychologique ?symptome .
-  }
+  { ?patient :aSymptomePsychologique ?symptome . }
 }
-### 2.Lister les troubles psychologiques avec les interventions recommandées
-
-```sparql
-PREFIX : <http://www.example.org/psychontology#>
-
+### 2. Lister les troubles psychologiques avec les interventions recommendées
 SELECT ?trouble ?intervention
 WHERE {
-  ?trouble a :TroublePsychologique .
+  ?trouble a ?type .
+  ?type rdfs:subClassOf* :TroublePsychologique .
   ?trouble :recommandeIntervention ?intervention .
 }
-3️⃣ Lister les tests passés par chaque patient
 
-```sparql
-PREFIX : <http://www.example.org/psychontology#>
-
+### 3. Lister les tests pris par chaque patient
 SELECT ?patient ?test
 WHERE {
-  ?patient a :Patient .
+  ?patient a ?type .
+  ?type rdfs:subClassOf* :Patient .
   ?patient :prendsTest ?test .
 }
 
-4️⃣ Lister tous les types de troubles et leur sous-classes
-PREFIX : <http://www.example.org/psychontology#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
+### 4. Lister tous les sous types de TroublePsychologique
 SELECT ?subTrouble
 WHERE {
   ?subTrouble rdfs:subClassOf :TroublePsychologique .
 }
-5️⃣ Lister les patients diagnostiqués avec un trouble donné (ex: TDAH)
-PREFIX : <http://www.example.org/psychontology#>
 
+### 5. Lister les patients (Enfant or Adulte) giagnostiqué avec TDAH
 SELECT ?patient
 WHERE {
-  ?patient a :Patient .
+  ?patient a ?type .
+  ?type rdfs:subClassOf* :Patient .
   ?patient :diagnostiqueAvec :tdah .
 }
-
-
-
