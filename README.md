@@ -84,7 +84,7 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
 |                           | recommandeIntervention      | Lie un Trouble Psychologique à une Intervention                                                                                                             |
 
 ---
-### Visualisation
+### 🔍 Visualisation
 ![psychologie](https://github.com/user-attachments/assets/b4a4c838-cd25-4661-a337-8e9655b1224b)
 
 ## 🌐 Namespaces Utilisés
@@ -100,50 +100,3 @@ Ce projet vise à construire une ontologie détaillée pour la santé mentale en
 
 Ces vocabulaires standard assurent l'interopérabilité de l'ontologie avec d'autres systèmes sémantiques.
 
----
-
-## 🔍 Exemples de Requêtes SPARQL
-
-### 1. Lister tous les patients (adultes ou enfants) avec leurs symptomes 
-PREFIX : <http://www.example.org/psychologie#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?patient ?symptome
-WHERE {
-  ?patient a ?type .
-  ?type rdfs:subClassOf* :Patient .
-  { ?patient :aSymptome ?symptome . }
-  UNION
-  { ?patient :aSymptomePhysique ?symptome . }
-  UNION
-  { ?patient :aSymptomePsychologique ?symptome . }
-}
-### 2. Lister les troubles psychologiques avec les interventions recommendées
-SELECT ?trouble ?intervention
-WHERE {
-  ?trouble a ?type .
-  ?type rdfs:subClassOf* :TroublePsychologique .
-  ?trouble :recommandeIntervention ?intervention .
-}
-
-### 3. Lister les tests pris par chaque patient
-SELECT ?patient ?test
-WHERE {
-  ?patient a ?type .
-  ?type rdfs:subClassOf* :Patient .
-  ?patient :prendsTest ?test .
-}
-
-### 4. Lister tous les sous types de TroublePsychologique
-SELECT ?subTrouble
-WHERE {
-  ?subTrouble rdfs:subClassOf :TroublePsychologique .
-}
-
-### 5. Lister les patients (Enfant or Adulte) giagnostiqué avec TDAH
-SELECT ?patient
-WHERE {
-  ?patient a ?type .
-  ?type rdfs:subClassOf* :Patient .
-  ?patient :diagnostiqueAvec :tdah .
-}
