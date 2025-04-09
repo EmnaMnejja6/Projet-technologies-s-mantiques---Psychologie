@@ -7,6 +7,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.example.org/psychologie">
         <dc:creator>Ton Nom</dc:creator>
@@ -253,6 +254,8 @@
         <aSymptomePsychologique rdf:resource="http://www.example.org/psychontology#insomnie"/>
         <diagnostiqueAvec rdf:resource="http://www.example.org/psychontology#depression"/>
         <prendsTest rdf:resource="http://www.example.org/psychontology#BDI"/>
+        <foaf:name>Karim</foaf:name>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</foaf:age>
         <rdfs:comment>Patient adulte.</rdfs:comment>
         <rdfs:label>Karim</rdfs:label>
     </owl:NamedIndividual>
@@ -265,6 +268,9 @@
         <rdf:type rdf:resource="http://www.example.org/psychontology#Enfant"/>
         <diagnostiqueAvec rdf:resource="http://www.example.org/psychontology#autisme"/>
         <prendsTest rdf:resource="http://www.example.org/psychontology#STAI"/>
+        <foaf:name>Lina</foaf:name>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</foaf:age>
+        <foaf:gender>female</foaf:gender>
         <rdfs:comment>Patient enfant.</rdfs:comment>
         <rdfs:label>Lina</rdfs:label>
     </owl:NamedIndividual>
@@ -327,6 +333,8 @@
         <rdf:type rdf:resource="http://www.example.org/psychontology#Adulte"/>
         <aSymptomePhysique rdf:resource="http://www.example.org/psychontology#anxiete"/>
         <aSymptomePhysique rdf:resource="http://www.example.org/psychontology#fatigue_chronique"/>
+        <skos:prefLabel>Youssef</skos:prefLabel>
+        <skos:definition>Patient adulte présentant des symptômes physiques d'anxiété et de fatigue chronique.</skos:definition>
         <rdfs:comment>Patient adulte.</rdfs:comment>
         <rdfs:label>Youssef</rdfs:label>
     </owl:NamedIndividual>
