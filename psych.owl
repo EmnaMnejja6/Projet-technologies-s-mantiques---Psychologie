@@ -1,0 +1,1148 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/psychologie"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ontologies/psychologie">
+    <Prefix name="" IRI="http://www.semanticweb.org/ontologies/psychologie"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
+    <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
+    
+    <!-- Classes -->
+    
+    <!-- Personne -->
+    <Declaration>
+        <Class IRI="#Personne"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#Patient"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Patient"/>
+        <Class IRI="#Personne"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Praticien"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Praticien"/>
+        <Class IRI="#Personne"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Psychologue"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Psychologue"/>
+        <Class IRI="#Praticien"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Psychiatre"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Psychiatre"/>
+        <Class IRI="#Praticien"/>
+    </SubClassOf>
+    
+    <!-- Symptômes -->
+    <Declaration>
+        <Class IRI="#Symptome"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#SymptomePhysique"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#SymptomePhysique"/>
+        <Class IRI="#Symptome"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#SymptomeCognitif"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#SymptomeCognitif"/>
+        <Class IRI="#Symptome"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#SymptomeEmotionnel"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#SymptomeEmotionnel"/>
+        <Class IRI="#Symptome"/>
+    </SubClassOf>
+    
+    <!-- Trouble Psychologique -->
+    <Declaration>
+        <Class IRI="#TroublePsychologique"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#TroubleAnxieux"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TroubleAnxieux"/>
+        <Class IRI="#TroublePsychologique"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TroubleHumeur"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TroubleHumeur"/>
+        <Class IRI="#TroublePsychologique"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TroublePsychotique"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TroublePsychotique"/>
+        <Class IRI="#TroublePsychologique"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Depression"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Depression"/>
+        <Class IRI="#TroubleHumeur"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TroubleAnxieteGeneralisee"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TroubleAnxieteGeneralisee"/>
+        <Class IRI="#TroubleAnxieux"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Schizophrenie"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Schizophrenie"/>
+        <Class IRI="#TroublePsychotique"/>
+    </SubClassOf>
+    
+    <!-- Classes composées -->
+    <Declaration>
+        <Class IRI="#TroubleAffectif"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#TroubleAffectif"/>
+        <ObjectUnionOf>
+            <Class IRI="#TroubleAnxieux"/>
+            <Class IRI="#TroubleHumeur"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    
+    <Declaration>
+        <Class IRI="#TroubleNonPsychotique"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#TroubleNonPsychotique"/>
+        <ObjectComplementOf>
+            <Class IRI="#TroublePsychotique"/>
+        </ObjectComplementOf>
+    </EquivalentClasses>
+    
+    <Declaration>
+        <Class IRI="#PatientDepressif"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#PatientDepressif"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Patient"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#aDiagnostic"/>
+                <Class IRI="#Depression"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    
+    <!-- Tests -->
+    <Declaration>
+        <Class IRI="#Test"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#TestPersonnalite"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TestPersonnalite"/>
+        <Class IRI="#Test"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TestCognitif"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TestCognitif"/>
+        <Class IRI="#Test"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TestProjectif"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TestProjectif"/>
+        <Class IRI="#Test"/>
+    </SubClassOf>
+    
+    <!-- Interventions -->
+    <Declaration>
+        <Class IRI="#Intervention"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#TherapieCognitivoComportementale"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TherapieCognitivoComportementale"/>
+        <Class IRI="#Intervention"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TherapiePsychodynamique"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TherapiePsychodynamique"/>
+        <Class IRI="#Intervention"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#TraitementMedicamenteux"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#TraitementMedicamenteux"/>
+        <Class IRI="#Intervention"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TraitementMedicamenteux"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#utilise"/>
+            <Class IRI="#Medicament"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    
+    <!-- Médicaments -->
+    <Declaration>
+        <Class IRI="#Medicament"/>
+    </Declaration>
+    
+    <Declaration>
+        <Class IRI="#Antidepresseur"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Antidepresseur"/>
+        <Class IRI="#Medicament"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Anxiolytique"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Anxiolytique"/>
+        <Class IRI="#Medicament"/>
+    </SubClassOf>
+    
+    <Declaration>
+        <Class IRI="#Antipsychotique"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Antipsychotique"/>
+        <Class IRI="#Medicament"/>
+    </SubClassOf>
+    
+    <!-- Object Properties -->
+    
+    <!-- Relations Patient-Symptome-Trouble -->
+    <Declaration>
+        <ObjectProperty IRI="#aSymptome"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aSymptome"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aSymptome"/>
+        <Class IRI="#Symptome"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#aDiagnostic"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aDiagnostic"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aDiagnostic"/>
+        <Class IRI="#TroublePsychologique"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#estAssocieA"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estAssocieA"/>
+        <Class IRI="#Symptome"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estAssocieA"/>
+        <Class IRI="#TroublePsychologique"/>
+    </ObjectPropertyRange>
+    
+    <!-- Relations Patient-Praticien -->
+    <Declaration>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+    </Declaration>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#aMedecinTraitant"/>
+    </Declaration>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#aMedecinTraitant"/>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aMedecinTraitant"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aMedecinTraitant"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyRange>
+    
+    <!-- Relations entre Praticiens -->
+    <Declaration>
+        <ObjectProperty IRI="#collaboreAvec"/>
+    </Declaration>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#collaboreAvec"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#collaboreAvec"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#collaboreAvec"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#supervise"/>
+    </Declaration>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#supervise"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#supervise"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#supervise"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#estSupervisePar"/>
+    </Declaration>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#estSupervisePar"/>
+        <ObjectProperty IRI="#supervise"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estSupervisePar"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estSupervisePar"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyRange>
+    
+    <!-- Relations Tests et Interventions -->
+    <Declaration>
+        <ObjectProperty IRI="#administreTest"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#administreTest"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#administreTest"/>
+        <Class IRI="#Test"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#aPasseTest"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aPasseTest"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aPasseTest"/>
+        <Class IRI="#Test"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#prescritIntervention"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#prescritIntervention"/>
+        <Class IRI="#Praticien"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#prescritIntervention"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#prescritMedicament"/>
+    </Declaration>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#prescritMedicament"/>
+        <ObjectProperty IRI="#prescritIntervention"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#prescritMedicament"/>
+        <Class IRI="#Psychiatre"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#prescritMedicament"/>
+        <Class IRI="#Medicament"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#recevoitIntervention"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#recevoitIntervention"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#recevoitIntervention"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#utilise"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#utilise"/>
+        <Class IRI="#TraitementMedicamenteux"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#utilise"/>
+        <Class IRI="#Medicament"/>
+    </ObjectPropertyRange>
+    
+    <Declaration>
+        <ObjectProperty IRI="#cibleTrouble"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#cibleTrouble"/>
+        <Class IRI="#Intervention"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#cibleTrouble"/>
+        <Class IRI="#TroublePsychologique"/>
+    </ObjectPropertyRange>
+    
+    <!-- Data Properties -->
+    <Declaration>
+        <DataProperty IRI="#nom"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nom"/>
+        <Class IRI="#Personne"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#nom"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#prenom"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#prenom"/>
+        <Class IRI="#Personne"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#prenom"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#dateNaissance"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#dateNaissance"/>
+        <Class IRI="#Personne"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#dateNaissance"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#niveau"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#niveau"/>
+        <Class IRI="#Symptome"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#niveau"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#niveau"/>
+        <DatatypeRestriction>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+            </FacetRestriction>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+            </FacetRestriction>
+        </DatatypeRestriction>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#dateDebut"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#dateDebut"/>
+        <Class IRI="#Symptome"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#dateDebut"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#score"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#score"/>
+        <Class IRI="#Test"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#score"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#anneeExperience"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#anneeExperience"/>
+        <Class IRI="#Praticien"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#anneeExperience"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#anneeExperience"/>
+        <DatatypeRestriction>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            </FacetRestriction>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">70</Literal>
+            </FacetRestriction>
+        </DatatypeRestriction>
+    </DataPropertyRange>
+    
+    <Declaration>
+        <DataProperty IRI="#dosage"/>
+    </Declaration>
+    <DataPropertyDomain>
+        <DataProperty IRI="#dosage"/>
+        <Class IRI="#Medicament"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#dosage"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    
+    <!-- Instances -->
+    <!-- Patients -->
+    <Declaration>
+        <NamedIndividual IRI="#patient1"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#patient1"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nom"/>
+        <NamedIndividual IRI="#patient1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Dupont</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#prenom"/>
+        <NamedIndividual IRI="#patient1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Jean</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#dateNaissance"/>
+        <NamedIndividual IRI="#patient1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">1980-05-15T00:00:00</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#patient2"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Patient"/>
+        <NamedIndividual IRI="#patient2"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nom"/>
+        <NamedIndividual IRI="#patient2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Martin</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#prenom"/>
+        <NamedIndividual IRI="#patient2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Sophie</Literal>
+    </DataPropertyAssertion>
+    
+    <!-- Praticiens -->
+    <Declaration>
+        <NamedIndividual IRI="#psy1"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Psychiatre"/>
+        <NamedIndividual IRI="#psy1"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nom"/>
+        <NamedIndividual IRI="#psy1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Leblanc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#prenom"/>
+        <NamedIndividual IRI="#psy1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Marie</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#anneeExperience"/>
+        <NamedIndividual IRI="#psy1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">15</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#psy2"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Psychologue"/>
+        <NamedIndividual IRI="#psy2"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nom"/>
+        <NamedIndividual IRI="#psy2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Robert</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#prenom"/>
+        <NamedIndividual IRI="#psy2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Thomas</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#anneeExperience"/>
+        <NamedIndividual IRI="#psy2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#collaboreAvec"/>
+        <NamedIndividual IRI="#psy1"/>
+        <NamedIndividual IRI="#psy2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+        <NamedIndividual IRI="#psy1"/>
+        <NamedIndividual IRI="#patient1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estMedecinTraitant"/>
+        <NamedIndividual IRI="#psy2"/>
+        <NamedIndividual IRI="#patient2"/>
+    </ObjectPropertyAssertion>
+    
+    <!-- Troubles -->
+    <Declaration>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Depression"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#tag"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TroubleAnxieteGeneralisee"/>
+        <NamedIndividual IRI="#tag"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#schizo_paranoide"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Schizophrenie"/>
+        <NamedIndividual IRI="#schizo_paranoide"/>
+    </ClassAssertion>
+    
+    <!-- Symptômes -->
+    <Declaration>
+        <NamedIndividual IRI="#insomnie"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#SymptomePhysique"/>
+        <NamedIndividual IRI="#insomnie"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#niveau"/>
+        <NamedIndividual IRI="#insomnie"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#tristesse"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#SymptomeEmotionnel"/>
+        <NamedIndividual IRI="#tristesse"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#niveau"/>
+        <NamedIndividual IRI="#tristesse"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#pensees_negatives"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#SymptomeCognitif"/>
+        <NamedIndividual IRI="#pensees_negatives"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#niveau"/>
+        <NamedIndividual IRI="#pensees_negatives"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </DataPropertyAssertion>
+    
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estAssocieA"/>
+        <NamedIndividual IRI="#insomnie"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estAssocieA"/>
+        <NamedIndividual IRI="#tristesse"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estAssocieA"/>
+        <NamedIndividual IRI="#pensees_negatives"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#aSymptome"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#insomnie"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#aSymptome"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#tristesse"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#aDiagnostic"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    
+    <!-- Tests -->
+    <Declaration>
+        <NamedIndividual IRI="#beck_depression_inventory"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TestPersonnalite"/>
+        <NamedIndividual IRI="#beck_depression_inventory"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#mmpi"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TestPersonnalite"/>
+        <NamedIndividual IRI="#mmpi"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#rorschach"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TestProjectif"/>
+        <NamedIndividual IRI="#rorschach"/>
+    </ClassAssertion>
+    
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#administreTest"/>
+        <NamedIndividual IRI="#psy2"/>
+        <NamedIndividual IRI="#beck_depression_inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#aPasseTest"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#beck_depression_inventory"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#score"/>
+        <NamedIndividual IRI="#beck_depression_inventory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">28.5</Literal>
+    </DataPropertyAssertion>
+    
+    <!-- Interventions et Médicaments -->
+    <Declaration>
+        <NamedIndividual IRI="#tcc_depression"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TherapieCognitivoComportementale"/>
+        <NamedIndividual IRI="#tcc_depression"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#psychanalyse"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TherapiePsychodynamique"/>
+        <NamedIndividual IRI="#psychanalyse"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#TraitementMedicamenteux"/>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+    </ClassAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#fluoxetine"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Antidepresseur"/>
+        <NamedIndividual IRI="#fluoxetine"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#dosage"/>
+        <NamedIndividual IRI="#fluoxetine"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">20.0</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#diazepam"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Anxiolytique"/>
+        <NamedIndividual IRI="#diazepam"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#dosage"/>
+        <NamedIndividual IRI="#diazepam"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">5.0</Literal>
+    </DataPropertyAssertion>
+    
+    <Declaration>
+        <NamedIndividual IRI="#olanzapine"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Antipsychotique"/>
+        <NamedIndividual IRI="#olanzapine"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#dosage"/>
+        <NamedIndividual IRI="#olanzapine"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">10.0</Literal>
+    </DataPropertyAssertion>
+    
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#utilise"/>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+        <NamedIndividual IRI="#fluoxetine"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#prescritIntervention"/>
+        <NamedIndividual IRI="#psy1"/>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#prescritIntervention"/>
+        <NamedIndividual IRI="#psy2"/>
+        <NamedIndividual IRI="#tcc_depression"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#recevoitIntervention"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#recevoitIntervention"/>
+        <NamedIndividual IRI="#patient1"/>
+        <NamedIndividual IRI="#tcc_depression"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#cibleTrouble"/>
+        <NamedIndividual IRI="#tcc_depression"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#cibleTrouble"/>
+        <NamedIndividual IRI="#traitement_antidepresseur"/>
+        <NamedIndividual IRI="#depression_majeure"/>
+    </ObjectPropertyAssertion>
+    
+    <!-- Règles SWRL -->
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Patient"/>
+                <Variable IRI="urn:swrl:var#p"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Symptome"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Symptome"/>
+                <Variable IRI="urn:swrl:var#s2"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Symptome"/>
+                <Variable IRI="urn:swrl:var#s3"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#SymptomeEmotionnel"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#SymptomePhysique"/>
+                <Variable IRI="urn:swrl:var#s2"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#SymptomeCognitif"/>
+                <Variable IRI="urn:swrl:var#s3"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aSymptome"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aSymptome"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#s2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aSymptome"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#s3"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#niveau"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+                <Variable IRI="urn:swrl:var#n1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#niveau"/>
+                <Variable IRI="urn:swrl:var#s2"/>
+                <Variable IRI="urn:swrl:var#n2"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="urn:swrl:var#n1"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="urn:swrl:var#n2"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+            </BuiltInAtom>
+            <ClassAtom>
+                <Class IRI="#Depression"/>
+                <Variable IRI="urn:swrl:var#d"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#estAssocieA"/>
+                <Variable IRI="urn:swrl:var#s1"/>
+                <Variable IRI="urn:swrl:var#d"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#estAssocieA"/>
+                <Variable IRI="urn:swrl:var#s2"/>
+                <Variable IRI="urn:swrl:var#d"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aDiagnostic"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#d"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Patient"/>
+                <Variable IRI="urn:swrl:var#p"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#TroubleHumeur"/>
+                <Variable IRI="urn:swrl:var#t"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aDiagnostic"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#t"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#TherapieCognitivoComportementale"/>
+                <Variable IRI="urn:swrl:var#tcc"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#recevoitIntervention"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#tcc"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#cibleTrouble"/>
+                <Variable IRI="urn:swrl:var#tcc"/>
+                <Variable IRI="urn:swrl:var#t"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Patient"/>
+                <Variable IRI="urn:swrl:var#p"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Psychologue"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#TestPersonnalite"/>
+                <Variable IRI="urn:swrl:var#test"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aMedecinTraitant"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#administreTest"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+                <Variable IRI="urn:swrl:var#test"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aPasseTest"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#test"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Patient"/>
+                <Variable IRI="urn:swrl:var#p"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#TroublePsychotique"/>
+                <Variable IRI="urn:swrl:var#t"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aDiagnostic"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#t"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#Psychiatre"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#aMedecinTraitant"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#TraitementMedicamenteux"/>
+                <Variable IRI="urn:swrl:var#tm"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#Antipsychotique"/>
+                <Variable IRI="urn:swrl:var#med"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#utilise"/>
+                <Variable IRI="urn:swrl:var#tm"/>
+                <Variable IRI="urn:swrl:var#med"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#prescritIntervention"/>
+                <Variable IRI="urn:swrl:var#psy"/>
+                <Variable IRI="urn:swrl:var#tm"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#recevoitIntervention"/>
+                <Variable IRI="urn:swrl:var#p"/>
+                <Variable IRI="urn:swrl:var#tm"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
