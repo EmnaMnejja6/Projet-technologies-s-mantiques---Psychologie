@@ -1,154 +1,95 @@
-#Requete 1 : Trouver tous les patients adultes diagnostiqués avec un trouble de l’humeur
+#Requete 1 : Lister tous les patients avec leurs diagnostics
+PREFIX psych: <http://www.semanticweb.org/ontologies/psychologie#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?patient
+SELECT ?patient ?nom ?prenom ?trouble
 WHERE {
-  ?patient rdf:type :Adulte .
-  ?patient :diagnostiquéAvec ?trouble .
-  ?trouble rdf:type :TroublesHumeur .
+  ?patient rdf:type psych:Patient .
+  ?patient psych:nom ?nom .
+  ?patient psych:prenom ?prenom .
+  ?patient psych:aDiagnostic ?diagnosticIndiv .
+  ?diagnosticIndiv rdf:type ?trouble .
+  ?trouble rdfs:subClassOf* psych:TroublePsychologique .
 }
 
 #résultat
-patient :Karim
+patient  	  nom       prenom   trouble
+patient1	 "Dupont"   "Jean"   Depression
 
-#Requete 2 : Lister les symptômes psychologiques associés aux enfants
+
+#Requete 2 : Trouver tous les symptômes associés à la dépression avec leur niveau
+PREFIX psych: <http://www.semanticweb.org/ontologies/psychologie#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
 
-SELECT ?enfant ?symptome
+SELECT ?symptome ?typeSymptome ?niveau
 WHERE {
-  ?enfant rdf:type :Enfant .
-  ?enfant :aSymptome ?symptome .
-  ?symptome rdf:type :aSymptomePsychologique .
+  ?symptome rdf:type ?typeSymptome .
+  ?typeSymptome rdfs:subClassOf psych:Symptome .
+  ?symptome psych:estAssocieA psych:depression_majeure .
+  ?symptome psych:niveau ?niveau .
 }
+
 
 #résultat
-enfant  	 symptome
-Alice	  :  trouble_attention
+symptome            typeSymptome           niveau   
+tristesse	          SymptomeEmotionnel     "8"  
+insomnie	          SymptomePhysique       "7"  
+pensees_negatives	  SymptomeCognitif       "6"  
 
-#Requete 3 : Trouver les tests passés par des patients ayant un trouble du neurodéveloppement
+
+#Requete 3 : Lister tous les praticiens avec leur expérience, triés par années d'expérience
+PREFIX psych: <http://www.semanticweb.org/ontologies/psychologie#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
 
-SELECT ?patient ?test
+SELECT ?praticien ?nom ?prenom ?typePraticien ?experience
 WHERE {
-  ?patient :diagnostiquéAvec ?trouble .
-  ?trouble rdf:type :TroublesNeurodeveloppement .
-  ?patient :prendsTest ?test .
+  ?praticien rdf:type ?typePraticien .
+  ?typePraticien rdfs:subClassOf psych:Praticien .
+  ?praticien psych:nom ?nom .
+  ?praticien psych:prenom ?prenom .
+  ?praticien psych:anneeExperience ?experience .
 }
-#resultat
-patient  	 symptome
-Lina	  :  STAI
-Alice	  :  WISC_V
-
-#Requete 4 : Trouver les interventions recommandées pour les troubles de la personnalité
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
-
-SELECT ?trouble ?intervention
-WHERE {
-  ?trouble rdf:type :TroublesHumeurPersonnalite .
-  ?trouble :recommandeIntervention ?intervention .
-}
+ORDER BY DESC(?experience)
 
 #resultat
-trouble	     intervention
-depression	 TCC
+praticien    nom         prenom      typepraticien   experience   
+psy1	      "Leblanc"    "Marie"     Psychiatre      "15"
+psy2	      "Thomas"     "Robert"    Psychologue     "8"
 
-#Requete 5 : Symptômes physiques associés aux adultes
+#Requete 4 : Trouver les troubles psychologiques qui n'ont pas encore de patients diagnostiqués
+PREFIX psych: <http://www.semanticweb.org/ontologies/psychologie#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
 
-SELECT ?adulte ?symptome WHERE {
-  ?adulte rdf:type :Adulte .
-  ?adulte :aSymptomePhysique ?symptome .
+SELECT ?trouble
+WHERE {
+  ?troubleIndiv rdf:type ?trouble .
+  ?trouble rdfs:subClassOf+ psych:TroublePsychologique .
+  FILTER NOT EXISTS {
+    ?patient psych:aDiagnostic ?troubleIndiv .
+  }
 }
 
 #resultat
-adulte	  symptome
-Youssef	: anxiety
-Youssef	: fatigue_chronique
+trouble	     
+Schizophrenie
+TroubleAnxieteGeneralisee
 
-#Requete 6 : Les symptômes liés à un trouble de l'humeur pour adulte
+#Requete 5 : Trouver les psychologues qui administrent des tests et les types de tests
+PREFIX psych: <http://www.semanticweb.org/ontologies/psychologie#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
 
-SELECT ?adulte ?trouble ?symptome WHERE {
-  ?adulte rdf:type :Adulte .
-  ?adulte :diagnostiquéAvec ?trouble .
-  ?trouble rdf:type :TroublesHumeur .
-  ?adulte :aSymptomePsychologique ?symptome .
+SELECT ?psychologue ?nom ?prenom ?test ?typeTest
+WHERE {
+  ?psychologue rdf:type psych:Psychologue .
+  ?psychologue psych:nom ?nom .
+  ?psychologue psych:prenom ?prenom .
+  ?psychologue psych:administreTest ?test .
+  ?test rdf:type ?typeTest .
+  ?typeTest rdfs:subClassOf psych:Test .
 }
+
 
 #resultat
-adulte	trouble	     Symptôme
-Karim	  depression	 insomnie
-
-#Requete 7 : Tous les adultes ayant au moins un symptôme psychologique et un test
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://www.semanticweb.org/administrator/ontologies/2025/3/untitled-ontology-11#>
-
-SELECT ?adulte ?symptome ?test WHERE {
-  ?adulte rdf:type :Adulte .
-  ?adulte :aSymptomePsychologique ?symptome .
-  ?adulte :prendsTest ?test .
-}
-
-#resultat
-adulte	 symptôme	  test
-Karim	   insomnie	  BDI
-
-
-
-
-Lister les patients et leurs symptômes
-
-PREFIX : <http://www.example.org/psychologie#>
-
-SELECT ?patient ?symptome
-WHERE {
-  ?patient a :Enfant . # ou :Adulte selon les cas
-  ?patient :aSymptome ?symptome .
-}
-
-Trouver les troubles psychologiques et les interventions recommandées
-PREFIX : <http://www.example.org/psychologie#>
-
-SELECT ?trouble ?intervention
-WHERE {
-  ?trouble a :TroublePsychologique .
-  ?trouble :recommandeIntervention ?intervention .
-}
-
-Lister les patients qui ont passé un test spécifique
-PREFIX : <http://www.example.org/psychologie#>
-
-SELECT ?patient
-WHERE {
-  ?patient a :Adulte . # ou :Enfant
-  ?patient :prendsTest :BeckDepressionInventory .
-}
-
-Rechercher les patients qui ont un symptôme psychologique
-PREFIX : <http://www.example.org/psychologie#>
-
-SELECT ?patient
-WHERE {
-  ?patient a :Adulte . # ou :Enfant
-  ?patient :Psychologique ?symptome .
-}
-
-Obtenir les tests utilisés pour diagnostiquer un trouble donné
-PREFIX : <http://www.example.org/psychologie#>
-
-SELECT ?test ?trouble
-WHERE {
-  ?patient a :Adulte .
-  ?patient :prendsTest ?test .
-  ?patient :diagnostiqueAvec ?trouble .
-}
-
-
-
-
+psychologue   nom       prenom      test                          typeTest   
+psy2	       "Thomas"   "Robert"    beck_depression_inventory     TestPersonnalite
