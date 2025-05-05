@@ -1,0 +1,15 @@
+ 1. Régle de diagnostique automatique
+Si un patient présente :
+des symptômes émotionnels sévères (>7)
+des symptômes physiques modérés (>5) 
+des symptômes cognitifs associés à la dépression
+=> alors il reçoit un diagnostic de dépression.
+
+2. Règle de recommandation de thérapie
+ Pour tout patient ayant un diagnostic de trouble de l'humeur, une thérapie cognitivo-comportementale ciblant ce trouble est recommandée.
+
+3. Règle d'administration de test
+Si un patient a un psychologue comme médecin traitant, alors ce psychologue lui administre un test de personnalité et le patient est considéré comme ayant passé ce test.
+
+4. Règle de prescription médicamenteuse
+ Si un patient a un diagnostic de trouble psychotique et un psychiatre comme médecin traitant, alors le psychiatre lui prescrit un traitement médicamenteux utilisant un antipsychotique.
