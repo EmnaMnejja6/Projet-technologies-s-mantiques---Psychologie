@@ -152,10 +152,7 @@ psychologie-ontology/
 ├── regles_swrl.swrl     # Fichier contenant les règles SWRL
 └── README.md            # Documentation et présentation du projet
 
----
----
-
-## 📑 Table des Matières
+```
 ## Conclusion
 
 Cette ontologie pour la psychologie clinique offre un modèle riche et formel pour représenter les connaissances du domaine. Elle permet non seulement d'organiser les informations sur les patients, leurs symptômes et leurs traitements, mais aussi de déduire de nouvelles connaissances à l'aide des capacités d'inférence d'OWL et des règles SWRL.
