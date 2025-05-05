@@ -7,11 +7,6 @@ Ce projet a pour but de modéliser le domaine de la psychologie en intégrant le
 4. **Test** 📝  
 5. **Intervention** 💊  
 
-Les relations principales mises en place sont :  
-- **aSymptome** (avec sous-propriétés *Physique* 💪 et *Psychologique* 🧠)  
-- **diagnostiqueAvec** (exemple : *Alice diagnostiqueAvec Dépression*)  
-- **prendsTest** (exemple : *Alice prendsTest BeckDepressionInventory*)  
-- **recommandeIntervention** (exemple : *Dépression recommandeIntervention CBT*)
 
 ---
 
@@ -99,7 +94,7 @@ Ce projet vise à construire une ontologie détaillée pour la psychologie en ut
 - **administreTest** - Relie un praticien au test qu'il administre
 - **aPasseTest** - Relie un patient au test qu'il a passé
 - **prescritIntervention** - Relie un praticien à l'intervention qu'il prescrit
-- - **prescritMedicament** - limitée aux psychiatres
+   - **prescritMedicament** - limitée aux psychiatres
 - **recevoitIntervention** - Relie un patient à l'intervention qu'il reçoit
 - **utilise** - Relie un traitement médicamenteux à un médicament
 - **cibleTrouble** - Relie une intervention au trouble qu'elle cible
@@ -116,20 +111,6 @@ Ce projet vise à construire une ontologie détaillée pour la psychologie en ut
 - **dosage** - Dosage d'un médicament (en mg)
 
 ### 📊 Tableau récapitulatif
-
-| **Catégorie**             | **Élément Général**         | **Sous-éléments / Relations**                                                                                                                               |
-|---------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Classes : Patient**     | Patient 👤                  | - Adulte<br>- Enfant                                                                                                                                        |
-| **Classes : Symptômes**   | Symptômes 🤒                | (Regroupe l'ensemble des symptômes)                                                                                                                         |
-| **Classes : Troubles**    | Trouble Psychologique 🧩     | - Neurodéveloppemental<br>- De humeur<br>- De personnalité                                                                                                  |
-| **Classes : Test**        | Test 📝                     | (Différents tests de diagnostic)                                                                                                                            |
-| **Classes : Intervention**| Intervention 💊             | (Interventions thérapeutiques)                                                                                                                              |
-| **Propriétés : aSymptome**| aSymptome                  | - Physique 💪<br>- Psychologique 🧠                                                                                                                           |
-| **Autres Propriétés**     | diagnostiqueAvec            | Lie un Patient à un Trouble Psychologique                                                                                                                   |
-|                           | prendsTest                  | Lie un Patient à un Test                                                                                                                                        |
-|                           | recommandeIntervention      | Lie un Trouble Psychologique à une Intervention                                                                                                             |
-## 📊 Tableau récapitulatif des classes et propriétés
-
 | **Classe**                | **Sous-classes**                                                                 | **Propriétés d'objets**                                                              | **Propriétés de données**                                      |
 |---------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------|
 | **Personnes 👤**           | **Patient**, **Praticien** (Psychologue, Psychiatre)                               | **estMedecinTraitant** (relie un praticien à un patient)                             | **nom**, **prenom**, **dateNaissance**                         |
@@ -172,6 +153,9 @@ psychologie-ontology/
 └── README.md            # Documentation et présentation du projet
 
 ---
+---
+
+## 📑 Table des Matières
 ## Conclusion
 
 Cette ontologie pour la psychologie clinique offre un modèle riche et formel pour représenter les connaissances du domaine. Elle permet non seulement d'organiser les informations sur les patients, leurs symptômes et leurs traitements, mais aussi de déduire de nouvelles connaissances à l'aide des capacités d'inférence d'OWL et des règles SWRL.
