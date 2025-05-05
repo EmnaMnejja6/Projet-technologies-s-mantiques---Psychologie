@@ -1,489 +1,451 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.example.org/psychontology#"
-     xml:base="http://www.example.org/psychontology"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:foaf="http://xmlns.com/foaf/0.1/"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.example.org/psychologie">
-        <dc:creator>Ton Nom</dc:creator>
-        <dc:date>2025-04-09</dc:date>
-        <rdfs:comment>Ontologie pour la modélisation du domaine de la santé mentale, incluant patients, symptômes, troubles psychologiques, tests et interventions.</rdfs:comment>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/creator -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
-    
-
-
-    <!-- http://purl.org/dc/elements/1.1/date -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.example.org/psychontology#aSymptome -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#aSymptome">
-        <rdfs:comment>Relie un patient à un symptôme.</rdfs:comment>
-        <rdfs:label>aSymptôme</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.example.org/psychontology#aSymptomePhysique -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#aSymptomePhysique">
-        <rdfs:subPropertyOf rdf:resource="http://www.example.org/psychontology#aSymptome"/>
-        <rdfs:comment>Indique un symptôme à manifestation physique.</rdfs:comment>
-        <rdfs:label>aSymptôme Physique</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.example.org/psychontology#aSymptomePsychologique -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#aSymptomePsychologique">
-        <rdfs:subPropertyOf rdf:resource="http://www.example.org/psychontology#aSymptome"/>
-        <rdfs:comment>Indique un symptôme à manifestation psychologique.</rdfs:comment>
-        <rdfs:label>aSymptôme Psychologique</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.example.org/psychontology#diagnostiqueAvec -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#diagnostiqueAvec">
-        <rdfs:comment>Relie un patient à un trouble psychologique diagnostiqué.</rdfs:comment>
-        <rdfs:label>diagnostiqueAvec</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.example.org/psychontology#prendsTest -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#prendsTest">
-        <rdfs:comment>Relie un patient à un test passé.</rdfs:comment>
-        <rdfs:label>prendsTest</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.example.org/psychontology#recommandeIntervention -->
-
-    <owl:ObjectProperty rdf:about="http://www.example.org/psychontology#recommandeIntervention">
-        <rdfs:comment>Relie un trouble psychologique à une intervention recommandée.</rdfs:comment>
-        <rdfs:label>recommandeIntervention</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.example.org/psychontology#Adulte -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Adulte">
-        <rdfs:subClassOf rdf:resource="http://www.example.org/psychontology#Patient"/>
-        <rdfs:comment>Classe représentant les patients adultes.</rdfs:comment>
-        <rdfs:label>Adulte</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#Enfant -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Enfant">
-        <rdfs:subClassOf rdf:resource="http://www.example.org/psychontology#Patient"/>
-        <rdfs:comment>Classe représentant les patients enfants.</rdfs:comment>
-        <rdfs:label>Enfant</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#Intervention -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Intervention">
-        <rdfs:comment>Classe pour les interventions thérapeutiques.</rdfs:comment>
-        <rdfs:label>Intervention</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#Patient -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Patient">
-        <rdfs:comment>Classe représentant les patients.</rdfs:comment>
-        <rdfs:label>Patient</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#Symptome -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Symptome">
-        <rdfs:comment>Classe regroupant les symptômes observés chez les patients.</rdfs:comment>
-        <rdfs:label>Symptôme</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#Test -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#Test">
-        <rdfs:comment>Classe regroupant les tests de diagnostic.</rdfs:comment>
-        <rdfs:label>Test</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#TroubleHumeur -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#TroubleHumeur">
-        <rdfs:subClassOf rdf:resource="http://www.example.org/psychontology#TroublePsychologique"/>
-        <rdfs:comment>Classe pour les troubles de l&apos;humeur (ex : dépression, bipolarité).</rdfs:comment>
-        <rdfs:label>Trouble de l&apos;humeur</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#TroubleNeurodeveloppemental -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#TroubleNeurodeveloppemental">
-        <rdfs:subClassOf rdf:resource="http://www.example.org/psychontology#TroublePsychologique"/>
-        <rdfs:comment>Classe pour les troubles liés au développement neurologique (ex : autisme, TDAH).</rdfs:comment>
-        <rdfs:label>Trouble neurodéveloppemental</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#TroublePersonnalite -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#TroublePersonnalite">
-        <rdfs:subClassOf rdf:resource="http://www.example.org/psychontology#TroublePsychologique"/>
-        <rdfs:comment>Classe pour les troubles de la personnalité (ex : trouble borderline).</rdfs:comment>
-        <rdfs:label>Trouble de la personnalité</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.example.org/psychontology#TroublePsychologique -->
-
-    <owl:Class rdf:about="http://www.example.org/psychontology#TroublePsychologique">
-        <rdfs:comment>Classe regroupant les troubles psychologiques.</rdfs:comment>
-        <rdfs:label>Trouble Psychologique</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.example.org/psychontology#Alice -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#Alice">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Enfant"/>
-        <aSymptomePsychologique rdf:resource="http://www.example.org/psychontology#trouble_attention"/>
-        <diagnostiqueAvec rdf:resource="http://www.example.org/psychontology#tdah"/>
-        <prendsTest rdf:resource="http://www.example.org/psychontology#WISC_V"/>
-        <rdfs:comment>Patient enfant.</rdfs:comment>
-        <rdfs:label>Alice</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#BDI -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#BDI">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Test"/>
-        <rdfs:comment>Beck Depression Inventory, test pour évaluer la dépression.</rdfs:comment>
-        <rdfs:label>BDI</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#Karim -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#Karim">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Adulte"/>
-        <aSymptomePsychologique rdf:resource="http://www.example.org/psychontology#insomnie"/>
-        <diagnostiqueAvec rdf:resource="http://www.example.org/psychontology#depression"/>
-        <prendsTest rdf:resource="http://www.example.org/psychontology#BDI"/>
-        <foaf:name>Karim</foaf:name>
-        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</foaf:age>
-        <rdfs:comment>Patient adulte.</rdfs:comment>
-        <rdfs:label>Karim</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#Lina -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#Lina">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Enfant"/>
-        <diagnostiqueAvec rdf:resource="http://www.example.org/psychontology#autisme"/>
-        <prendsTest rdf:resource="http://www.example.org/psychontology#STAI"/>
-        <foaf:name>Lina</foaf:name>
-        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</foaf:age>
-        <foaf:gender>female</foaf:gender>
-        <rdfs:comment>Patient enfant.</rdfs:comment>
-        <rdfs:label>Lina</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#MMPI_2 -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#MMPI_2">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Test"/>
-        <rdfs:comment>Minnesota Multiphasic Personality Inventory, test de personnalité.</rdfs:comment>
-        <rdfs:label>MMPI-2</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#PHQ_9 -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#PHQ_9">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Test"/>
-        <rdfs:comment>Questionnaire pour évaluer la dépression.</rdfs:comment>
-        <rdfs:label>PHQ-9</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#STAI -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#STAI">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Test"/>
-        <rdfs:comment>State-Trait Anxiety Inventory pour mesurer l&apos;anxiété.</rdfs:comment>
-        <rdfs:label>STAI</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#TCC -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#TCC">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Intervention"/>
-        <rdfs:comment>Thérapie Cognitivo-Comportementale, intervention pour traiter la dépression et autres troubles de l&apos;humeur.</rdfs:comment>
-        <rdfs:label>TCC</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#WISC_V -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#WISC_V">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Test"/>
-        <rdfs:comment>Wechsler Intelligence Scale for Children, test pour évaluer l&apos;intelligence chez les enfants.</rdfs:comment>
-        <rdfs:label>WISC-V</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#Youssef -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#Youssef">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Adulte"/>
-        <aSymptomePhysique rdf:resource="http://www.example.org/psychontology#anxiete"/>
-        <aSymptomePhysique rdf:resource="http://www.example.org/psychontology#fatigue_chronique"/>
-        <skos:prefLabel>Youssef</skos:prefLabel>
-        <skos:definition>Patient adulte présentant des symptômes physiques d'anxiété et de fatigue chronique.</skos:definition>
-        <rdfs:comment>Patient adulte.</rdfs:comment>
-        <rdfs:label>Youssef</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#anxiete -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#anxiete">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Symptome"/>
-        <rdfs:comment>Symptôme d&apos;inquiétude excessive.</rdfs:comment>
-        <rdfs:label>Anxiété</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#autisme -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#autisme">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#TroubleNeurodeveloppemental"/>
-        <recommandeIntervention rdf:resource="http://www.example.org/psychontology#therapie_familiale"/>
-        <rdfs:comment>Trouble neurodéveloppemental affectant la communication et les interactions sociales.</rdfs:comment>
-        <rdfs:label>Autisme</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#bipolaire -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#bipolaire">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#TroubleHumeur"/>
-        <rdfs:comment>Trouble de l&apos;humeur caractérisé par des épisodes maniaques et dépressifs.</rdfs:comment>
-        <rdfs:label>Bipolaire</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#borderline -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#borderline">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#TroublePersonnalite"/>
-        <rdfs:comment>Trouble de la personnalité caractérisé par une instabilité émotionnelle.</rdfs:comment>
-        <rdfs:label>Borderline</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#depression -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#depression">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#TroubleHumeur"/>
-        <recommandeIntervention rdf:resource="http://www.example.org/psychontology#TCC"/>
-        <rdfs:comment>Trouble de l&apos;humeur caractérisé par une humeur dépressive.</rdfs:comment>
-        <rdfs:label>Dépression</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#fatigue_chronique -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#fatigue_chronique">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Symptome"/>
-        <rdfs:comment>Symptôme caractérisé par une fatigue persistante.</rdfs:comment>
-        <rdfs:label>Fatigue Chronique</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#insomnie -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#insomnie">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Symptome"/>
-        <rdfs:comment>Symptôme de trouble du sommeil.</rdfs:comment>
-        <rdfs:label>Insomnie</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#maux_de_tete -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#maux_de_tete">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Symptome"/>
-        <rdfs:comment>Symptôme caractérisé par des douleurs dans la tête.</rdfs:comment>
-        <rdfs:label>Maux de Tête</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#medicament -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#medicament">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Intervention"/>
-        <rdfs:comment>Traitement médicamenteux pour les troubles psychologiques.</rdfs:comment>
-        <rdfs:label>Médicament</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#psychoeducation -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#psychoeducation">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Intervention"/>
-        <rdfs:comment>Intervention éducative pour mieux comprendre et gérer les troubles.</rdfs:comment>
-        <rdfs:label>Psychoéducation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#relaxation -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#relaxation">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Intervention"/>
-        <rdfs:comment>Technique de relaxation pour réduire l&apos;anxiété.</rdfs:comment>
-        <rdfs:label>Relaxation</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#tdah -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#tdah">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#TroubleNeurodeveloppemental"/>
-        <recommandeIntervention rdf:resource="http://www.example.org/psychontology#psychoeducation"/>
-        <rdfs:comment>Trouble neurodéveloppemental se manifestant par des difficultés d&apos;attention.</rdfs:comment>
-        <rdfs:label>TDAH</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#therapie_familiale -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#therapie_familiale">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Intervention"/>
-        <rdfs:comment>Intervention impliquant la famille pour améliorer la communication et le soutien.</rdfs:comment>
-        <rdfs:label>Thérapie Familiale</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.example.org/psychontology#trouble_attention -->
-
-    <owl:NamedIndividual rdf:about="http://www.example.org/psychontology#trouble_attention">
-        <rdf:type rdf:resource="http://www.example.org/psychontology#Symptome"/>
-        <rdfs:comment>Symptôme de difficultés de concentration.</rdfs:comment>
-        <rdfs:label>Trouble de l&apos;Attention</rdfs:label>
-    </owl:NamedIndividual>
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:psy="http://www.semanticweb.org/ontologies/psychologie#">
+
+  <!-- Déclaration des namespaces -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/psychologie">
+    <dc:title>Ontologie de psychologie</dc:title>
+    <dc:creator>Modèle de connaissances en psychologie</dc:creator>
+    <dc:description>Modélisation des connaissances en psychologie clinique</dc:description>
+    <dc:date>2025-05-05</dc:date>
+  </rdf:Description>
+
+  <!-- Classes principales -->
+  <!-- Personne -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Personne">
+    <rdfs:label>Personne</rdfs:label>
+    <rdfs:comment>Une personne dans le contexte de l'ontologie de psychologie</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Patient">
+    <rdfs:label>Patient</rdfs:label>
+    <rdfs:comment>Un patient en soins psychologiques</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Personne"/>
+    <skos:definition>Une personne qui reçoit des soins en santé mentale</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Praticien">
+    <rdfs:label>Praticien</rdfs:label>
+    <rdfs:comment>Un professionnel de la santé mentale</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Personne"/>
+    <skos:definition>Un professionnel qui fournit des soins en santé mentale</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Psychologue">
+    <rdfs:label>Psychologue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Psychiatre">
+    <rdfs:label>Psychiatre</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+  </rdfs:Class>
+
+  <!-- Symptômes -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Symptome">
+    <rdfs:label>Symptôme</rdfs:label>
+    <rdfs:comment>Un symptôme psychologique</rdfs:comment>
+    <skos:definition>Un signe ou manifestation d'un trouble psychologique</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#SymptomePhysique">
+    <rdfs:label>Symptôme Physique</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#SymptomeCognitif">
+    <rdfs:label>Symptôme Cognitif</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#SymptomeEmotionnel">
+    <rdfs:label>Symptôme Émotionnel</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+  </rdfs:Class>
+
+  <!-- Troubles Psychologiques -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique">
+    <rdfs:label>Trouble Psychologique</rdfs:label>
+    <rdfs:comment>Un trouble ou condition psychologique</rdfs:comment>
+    <skos:definition>Une condition mentale diagnostiquée selon des critères cliniques</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleAnxieux">
+    <rdfs:label>Trouble Anxieux</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleHumeur">
+    <rdfs:label>Trouble de l'Humeur</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroublePsychotique">
+    <rdfs:label>Trouble Psychotique</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Depression">
+    <rdfs:label>Dépression</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroubleHumeur"/>
+    <skos:definition>Trouble de l'humeur caractérisé par une tristesse persistante et une perte d'intérêt</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleAnxieteGeneralisee">
+    <rdfs:label>Trouble d'Anxiété Généralisée</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroubleAnxieux"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Schizophrenie">
+    <rdfs:label>Schizophrénie</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychotique"/>
+  </rdfs:Class>
+
+  <!-- Classes composées -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleAffectif">
+    <rdfs:label>Trouble Affectif</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleAnxieux"/>
+          <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleHumeur"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TroubleNonPsychotique">
+    <rdfs:label>Trouble Non Psychotique</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:complementOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychotique"/>
+      </owl:Class>
+    </owl:equivalentClass>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#PatientDepressif">
+    <rdfs:label>Patient Dépressif</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/psychologie#aDiagnostic"/>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Depression"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </rdfs:Class>
+
+  <!-- Tests -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Test">
+    <rdfs:label>Test</rdfs:label>
+    <rdfs:comment>Un test psychologique</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TestPersonnalite">
+    <rdfs:label>Test de Personnalité</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TestCognitif">
+    <rdfs:label>Test Cognitif</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TestProjectif">
+    <rdfs:label>Test Projectif</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+  </rdfs:Class>
+
+  <!-- Interventions -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Intervention">
+    <rdfs:label>Intervention</rdfs:label>
+    <rdfs:comment>Une intervention thérapeutique</rdfs:comment>
+    <skos:definition>Traitement ou approche utilisée pour traiter les troubles psychologiques</skos:definition>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TherapieCognitivoComportementale">
+    <rdfs:label>Thérapie Cognitivo-Comportementale</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TherapiePsychodynamique">
+    <rdfs:label>Thérapie Psychodynamique</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#TraitementMedicamenteux">
+    <rdfs:label>Traitement Médicamenteux</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/psychologie#utilise"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+
+  <!-- Médicaments -->
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Medicament">
+    <rdfs:label>Médicament</rdfs:label>
+    <rdfs:comment>Un médicament utilisé en psychiatrie</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Antidepresseur">
+    <rdfs:label>Antidépresseur</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Anxiolytique">
+    <rdfs:label>Anxiolytique</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/psychologie#Antipsychotique">
+    <rdfs:label>Antipsychotique</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+  </rdfs:Class>
+
+  <!-- Object Properties -->
+  
+  <!-- Relations Patient-Symptome-Trouble -->
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#aSymptome">
+    <rdfs:label>a pour symptôme</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#aDiagnostic">
+    <rdfs:label>a pour diagnostic</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#estAssocieA">
+    <rdfs:label>est associé à</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdf:Property>
+
+  <!-- Relations Patient-Praticien -->
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#estMedecinTraitant">
+    <rdfs:label>est médecin traitant</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#aMedecinTraitant">
+    <rdfs:label>a pour médecin traitant</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#estMedecinTraitant"/>
+  </rdf:Property>
+
+  <!-- Relations entre Praticiens -->
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#collaboreAvec">
+    <rdfs:label>collabore avec</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <skos:note>Une relation de collaboration entre deux praticiens</skos:note>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#supervise">
+    <rdfs:label>supervise</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#estSupervisePar">
+    <rdfs:label>est supervisé par</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#supervise"/>
+  </rdf:Property>
+
+  <!-- Relations Tests et Interventions -->
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#administreTest">
+    <rdfs:label>administre test</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#aPasseTest">
+    <rdfs:label>a passé test</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#prescritIntervention">
+    <rdfs:label>prescrit intervention</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#prescritMedicament">
+    <rdfs:label>prescrit médicament</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/psychologie#prescritIntervention"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Psychiatre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#recevoitIntervention">
+    <rdfs:label>reçoit intervention</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Patient"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#utilise">
+    <rdfs:label>utilise</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TraitementMedicamenteux"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#cibleTrouble">
+    <rdfs:label>cible trouble</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Intervention"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/psychologie#TroublePsychologique"/>
+  </rdf:Property>
+
+  <!-- Data Properties -->
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#nom">
+    <rdfs:label>nom</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/0.1/familyName"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#prenom">
+    <rdfs:label>prénom</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/0.1/givenName"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#dateNaissance">
+    <rdfs:label>date de naissance</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/0.1/birthday"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#niveau">
+    <rdfs:label>niveau</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+    <rdfs:range>
+       <xsd:simpleType>
+       <xsd:restriction base="xsd:integer">
+          <xsd:minInclusive value="1"/>
+          <xsd:maxInclusive value="10"/>
+       </xsd:restriction>
+       </xsd:simpleType>
+    </rdfs:range>
+    <rdfs:comment>Niveau de sévérité du symptôme (1-10)</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#dateDebut">
+    <rdfs:label>date de début</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Symptome"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#score">
+    <rdfs:label>score</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Test"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#anneeExperience">
+    <rdfs:label>années d'expérience</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Praticien"/>
+    <rdfs:range>
+       <xsd:simpleType>
+         <xsd:restriction base="xsd:integer">
+         <xsd:minInclusive value="0"/>
+         <xsd:maxInclusive value="70"/>
+         </xsd:restriction>
+       </xsd:simpleType>
+    </rdfs:range> 
+ </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.semanticweb.org/ontologies/psychologie#dosage">
+    <rdfs:label>dosage</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/psychologie#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+
+  <!-- Instances -->
+  <!-- Patients -->
+  <psy:Patient rdf:about="http://www.semanticweb.org/ontologies/psychologie#patient1">
+    <psy:nom>Dupont</psy:nom>
+    <psy:prenom>Jean</psy:prenom>
+    <psy:dateNaissance>1980-05-15T00:00:00</psy:dateNaissance>
+    <foaf:name>Jean Dupont</foaf:name>
+    <psy:aSymptome rdf:resource="http://www.semanticweb.org/ontologies/psychologie#insomnie"/>
+    <psy:aSymptome rdf:resource="http://www.semanticweb.org/ontologies/psychologie#tristesse"/>
+    <psy:aDiagnostic rdf:resource="http://www.semanticweb.org/ontologies/psychologie#depression_majeure"/>
+    <psy:recevoitIntervention rdf:resource="http://www.semanticweb.org/ontologies/psychologie#traitement_antidepresseur"/>
+    <psy:recevoitIntervention rdf:resource="http://www.semanticweb.org/ontologies/psychologie#tcc_depression"/>
+    <psy:aPasseTest rdf:resource="http://www.semanticweb.org/ontologies/psychologie#beck_depression_inventory"/>
+  </psy:Patient>
+
+  <psy:Patient rdf:about="http://www.semanticweb.org/ontologies/psychologie#patient2">
+    <psy:nom>Martin</psy:nom>
+    <psy:prenom>Sophie</psy:prenom>
+    <foaf:name>Sophie Martin</foaf:name>
+    <psy:aMedecinTraitant rdf:resource="http://www.semanticweb.org/ontologies/psychologie#psy2"/>
+  </psy:Patient>
+
+  <!-- Praticiens -->
+    <psy:Psychiatre rdf:about="http://www.semanticweb.org/ontologies/psychologie#psy1">
+        <psy:nom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Leblanc</psy:nom>
+        <psy:prenom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marie</psy:prenom>
+        <psy:anneeExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</psy:anneeExperience>
+        <psy:collaboreAvec rdf:resource="http://www.semanticweb.org/ontologies/psychologie#psy2"/>
+    </psy:Psychiatre>
+
+    <!-- Symptômes -->
+    <psy:SymptomePhysique rdf:about="http://www.semanticweb.org/ontologies/psychologie#insomnie">
+        <psy:niveau rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</psy:niveau>
+        <psy:estAssocieA rdf:resource="http://www.semanticweb.org/ontologies/psychologie#depression_majeure"/>
+    </psy:SymptomePhysique>
+
+    <!-- Troubles -->
+    <psy:Depression rdf:about="http://www.semanticweb.org/ontologies/psychologie#depression_majeure">
+        <skos:prefLabel>Dépression majeure</skos:prefLabel>
+    </psy:Depression>
+
+    <!-- Tests -->
+    <psy:TestPersonnalite rdf:about="http://www.semanticweb.org/ontologies/psychologie#beck_depression_inventory">
+        <psy:score rdf:datatype="http://www.w3.org/2001/XMLSchema#float">28.5</psy:score>
+    </psy:TestPersonnalite>
+
+    <!-- Interventions -->
+    <psy:TraitementMedicamenteux rdf:about="http://www.semanticweb.org/ontologies/psychologie#traitement_antidepresseur">
+        <psy:utilise rdf:resource="http://www.semanticweb.org/ontologies/psychologie#fluoxetine"/>
+        <psy:cibleTrouble rdf:resource="http://www.semanticweb.org/ontologies/psychologie#depression_majeure"/>
+    </psy:TraitementMedicamenteux>
+
+    <!-- Médicaments -->
+    <psy:Antidepresseur rdf:about="http://www.semanticweb.org/ontologies/psychologie#fluoxetine">
+        <psy:dosage rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20.0</psy:dosage>
+        <skos:prefLabel>Fluoxetine</skos:prefLabel>
+    </psy:Antidepresseur>
+
+    <!-- Relations supplémentaires -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/psychologie#psy1">
+        <psy:prescritIntervention rdf:resource="http://www.semanticweb.org/ontologies/psychologie#traitement_antidepresseur"/>
+    </rdf:Description>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
