@@ -120,11 +120,9 @@ Ce projet vise à construire une ontologie détaillée pour la psychologie en ut
 | **Interventions 💊**       | **TherapieCognitivoComportementale**, **TherapiePsychodynamique**, **TraitementMedicamenteux** | **prescritIntervention** (relie un praticien à une intervention)                    | **dosage** (en mg)                                             |
 | **Médicaments 💊**         | **Antidepresseur**, **Anxiolytique**, **Antipsychotique**                         | **utilise** (relie un traitement médicamenteux à un médicament)                      | **dosage** (en mg)                                             |
 
+## Visualisation
 
-
----
-
-![santementale](https://github.com/user-attachments/assets/af1855ac-4b36-49db-8f18-c680c970bd45)
+![visualisation](https://github.com/user-attachments/assets/8737270a-8fa0-45fb-a8f4-a6015ddc15cb)
 
 
 ## 🌐 Namespaces Utilisés
