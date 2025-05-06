@@ -8,8 +8,16 @@ des symptômes cognitifs associés à la dépression
 2. Règle de recommandation de thérapie
  Pour tout patient ayant un diagnostic de trouble de l'humeur, une thérapie cognitivo-comportementale ciblant ce trouble est recommandée.
 
+Patient(?p) ∧ diagnostiqueAvec(?p, TroubleHumeur) → recommandeIntervention(?p, TherapieCognitivoComportementale)
+
+
 3. Règle d'administration de test
 Si un patient a un psychologue comme médecin traitant, alors ce psychologue lui administre un test de personnalité et le patient est considéré comme ayant passé ce test.
 
+Patient(?p) ∧ aPourMedecin(?p, ?m) ∧ Psychologue(?m) → administreTest(?m, TestPersonnalite) ∧ aPasseTest(?p, TestPersonnalite)
+
+
 4. Règle de prescription médicamenteuse
  Si un patient a un diagnostic de trouble psychotique et un psychiatre comme médecin traitant, alors le psychiatre lui prescrit un traitement médicamenteux utilisant un antipsychotique.
+
+Patient(?p) ∧ diagnostiqueAvec(?p, TroublePsychotique) ∧ aPourMedecin(?p, ?m) ∧ Psychiatre(?m) → prescrit(?m, Antipsychotique)
