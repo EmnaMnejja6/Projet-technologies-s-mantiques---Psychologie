@@ -5,19 +5,59 @@ des symptômes physiques modérés (>5)
 des symptômes cognitifs associés à la dépression
 => alors il reçoit un diagnostic de dépression.
 
+Patient(?p) ^ 
+
+aSymptome(?p, ?se) ^ 
+SymptomeEmotionnel(?se) ^ 
+niveau(?se, ?nivE) ^ 
+swrlb:greaterThan(?nivE, 7) ^ 
+
+aSymptome(?p, ?sp) ^ 
+SymptomePhysique(?sp) ^ 
+niveau(?sp, ?nivP) ^ 
+swrlb:greaterThan(?nivP, 5) ^ 
+
+aSymptome(?p, ?sc) ^ 
+SymptomeCognitif(?sc) ^ 
+estAssocieA(?sc, Depression) ^ 
+
+→ aDiagnostic(?p, Depression)
+
+
 2. Règle de recommandation de thérapie
  Pour tout patient ayant un diagnostic de trouble de l'humeur, une thérapie cognitivo-comportementale ciblant ce trouble est recommandée.
 
-Patient(?p) ∧ diagnostiqueAvec(?p, TroubleHumeur) → recommandeIntervention(?p, TherapieCognitivoComportementale)
+Patient(?p) ^ 
+aDiagnostic(?p, ?t) ^ 
+TroubleHumeur(?t) ^ 
+cibleTrouble(?tcc, ?t) ^ 
+TherapieCognitivoComportementale(?tcc) 
+→ recevoitIntervention(?p, ?tcc)
 
 
 3. Règle d'administration de test
 Si un patient a un psychologue comme médecin traitant, alors ce psychologue lui administre un test de personnalité et le patient est considéré comme ayant passé ce test.
 
-Patient(?p) ∧ aPourMedecin(?p, ?m) ∧ Psychologue(?m) → administreTest(?m, TestPersonnalite) ∧ aPasseTest(?p, TestPersonnalite)
+Patient(?p) ^ 
+aMedecinTraitant(?p, ?m) ^ 
+Psychologue(?m) ^ 
+TestPersonnalite(?t) 
+→ 
+administreTest(?m, ?t) ^ 
+aPasseTest(?p, ?t)
 
 
 4. Règle de prescription médicamenteuse
  Si un patient a un diagnostic de trouble psychotique et un psychiatre comme médecin traitant, alors le psychiatre lui prescrit un traitement médicamenteux utilisant un antipsychotique.
 
-Patient(?p) ∧ diagnostiqueAvec(?p, TroublePsychotique) ∧ aPourMedecin(?p, ?m) ∧ Psychiatre(?m) → prescrit(?m, Antipsychotique)
+Patient(?p) ^ 
+aDiagnostic(?p, ?d) ^ 
+TroublePsychotique(?d) ^ 
+aMedecinTraitant(?p, ?psy) ^ 
+Psychiatre(?psy) ^ 
+TraitementMedicamenteux(?tm) ^ 
+Antipsychotique(?med)
+→ 
+prescritIntervention(?psy, ?tm) ^ 
+recevoitIntervention(?p, ?tm) ^ 
+utilise(?tm, ?med)
